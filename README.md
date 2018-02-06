@@ -9,7 +9,7 @@
   * table `segments`
   * table `answers` (+ relation tables `answer_category` and `answer_area`)
   * table `percents` (+ relation table `answer_percent`)
-* Bash script to load XLS file datas into table
+* Command to load XLS file datas into datatable
   * 1 entry in `files` with its name
   * 1 entry in `questions` per distinct "question" columns
   * 1 entry in `areas` per distinct "coverage area 1/2" columns
@@ -29,6 +29,18 @@
     * gender view: answers top5/10 for male/female
     * age view: age range selection (possibility of "all") + answers top5/10
     * segment view: segment selection (possibility of "all") + answer top5/10
-  * Idea of graphic:
-    * BarChart (x = top5/10, y = percent value) of HighChart
-    * click on a bar is a link to single answer view
+  * Idea of graphics:
+    * bar chart (x = top5/10, y = percent value) of HighChart
+      * [drilldown doc](https://www.highcharts.com/demo/column-drilldown)
+      * [rotated labels doc](https://www.highcharts.com/demo/column-rotated-labels)
+      * [3d columns doc](https://www.highcharts.com/demo/3d-column-interactive)
+    * or/and scatter chart
+      * [scatter doc](https://www.highcharts.com/demo/scatter)
+      * [3d scatter doc](https://www.highcharts.com/demo/3d-scatter-draggable)
+    * click on a bar/element of these graphics redirect to single answer view
+
+## Final tasks
+
+* Create a LAMP environment online
+* Deploy code there and run the loading command
+* Do 5 minutes description of the full process
