@@ -4,11 +4,11 @@
 * Create database structure
   * table `files`
   * table `questions`
-  * table `areas` (+ relation table `area_question`) for "games, media, mobile, music, sports, technology, video, ..."
+  * table `areas` for "games, media, mobile, music, sports, technology, video, ..."
   * table `categories`
   * table `segments`
   * table `answers` (+ relation tables `answer_category` and `answer_area`)
-  * table `percents` (+ relation table `answer_percent`)
+  * table `percents`
 * Command to load XLS file datas into datatable
   * 1 entry in `files` with its name
   * 1 entry in `questions` per distinct "question" columns
@@ -19,7 +19,6 @@
     * `file_id` int
     * `answer_id` int
     * `segment_id` int
-    * `description` string
     * `value` float
 * Create interface with graphics
   * Idea of main filters: file, question, area, category
