@@ -22,7 +22,7 @@ class ImportFiles extends Command
      *
      * @var string
      */
-    protected $signature = 'command:import-files';
+    protected $signature = 'command:import-files {--force}';
 
     /**
      * The console command description.
@@ -90,7 +90,7 @@ class ImportFiles extends Command
                         echo " - treatment\n";
                         $bar = $this->output->createProgressBar(count($reader->get()));
                         $reader->each(function($row) use ($bar, $file) {
-                            // $this->createPercents($row, $file->id);
+                            $this->createPercents($row, $file->id);
                             $bar->advance();
                         });
                         $bar->clear();
@@ -111,9 +111,11 @@ class ImportFiles extends Command
         $filename = basename($filepath);
         if ($this->files && $this->files->has($filename)) {
             $file = $this->files->get($filename);
-            if (File::STATUS_INPROGRESS === $file->status) {
+            if (File::STATUS_INPROGRESS === $file->status || $this->option('force')) {
                 // delete previously entries for this file
                 $file->percents()->delete();
+                $file->updated_at = new \DateTime();
+                $file->save();
             } else {
                 // this file has already been treated
                 return false;
